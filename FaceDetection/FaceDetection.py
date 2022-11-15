@@ -1,11 +1,12 @@
 import cv2 as cv
 import numpy as np
+import ColorFilter
 
-cap = cv.VideoCapture(0)
+#cap = cv.VideoCapture(0)
 faceData = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 while True:
-    ret,frame = cap.read()
+    ret,frame = ColorFilter.getFilteredVideo()
 
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     targets = faceData.detectMultiScale(gray, minSize=(10,10))
@@ -22,7 +23,6 @@ while True:
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
 
-cap.release()
 cv.destroyAllWindows()
 
 
