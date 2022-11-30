@@ -38,7 +38,6 @@ def filterFace(frame):
     
     b_mask=cv.inRange(into_hsv,lower_limit,upper_limit)
     red=cv.bitwise_and(frame,frame,mask=b_mask)
-
     return red
 
 
