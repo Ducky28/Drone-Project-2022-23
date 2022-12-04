@@ -1,28 +1,73 @@
 #include <Servo.h>
-#include <ezButton.h>
-#include <HardwareSerial.h>
 
-Servo servo;
-String coords;
-String subString;
+Servo servo; 
+
+const int servoPin; // will act as a substitute for the plunger for now
+const int motorPin1;
+const int motorPin2;
+
 int servoPos;
+String state;
 
 void setup() {
   // put your setup code here, to run once:
+
   Serial.begin(19200);
-  servo.attach(7);
-  pinMode(7,OUTPUT);
+  servo.attach(servoPin);
   servo.write(0);
+
+  pinMode(servoPin, OUTPUT);
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+
+
+
 }
 
 void loop() {
+
     while(Serial.available()==0){
       Serial.print("CANT REACH SERIAL PORT");
     }
     
-    coords = Serial.readString();
-    subString = coords.substring(0,2);
-    servoPos = int(subString.toInt());
-    servo.write(servoPos);
-    z
+    state = Serial.readLines();
+
+    switch(state){
+      case "STOP":
+
+        servo.write(0);
+        digitalWrite(motorPin1, LOW);
+        digitalWrite(motorPin2, LOW);
+
+        break;
+
+      case "SPIN MOTORS":
+
+        digitalWrite(motorPin1, HIGH);
+        digitalWrite(motorPin2, HIGH);
+
+        if(shouldWeStop() == 1){
+          state = "STOP";
+        }
+
+        break;
+
+        case "FIRE":
+
+          servo.write(180);
+          break
+    }
+
+int shouldWeStop( void ) {
+  if( digitalRead(BUTTON) == LOW ) {
+    //Serial.println( "   BUTTON LOW" );
+    return 0;
+  }
+  else {
+    //Serial.println( "   BUTTON HIGH" );
+    return 1;
+  }
+}
+
+    
 }
