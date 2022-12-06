@@ -23,15 +23,22 @@ while True:
         biggestFaceNum = 0
         bigX = bigY = bigWide = bigHeight = 0
         for(x, y, width, height) in targets:
+            
             if x+y+width+height > biggestFaceNum:
                 biggestFaceNum = x+y+width+height
                 bigX, bigY, bigWide, bigHeight = x, y, width, height
 
+        cv.rectangle(frame, (x, y), (bigX + bigWide, bigY + bigHeight), (0, 255, 0), 3)
         centerCoords = ((bigX+bigHeight)/2,(bigY+bigWide/2))
-        xCoord = bytes(centerCoords[0])
-        yCoord = bytes(centerCoords[1])
+        xCoord = (centerCoords[0])
+        yCoord = (centerCoords[1])
+
         sendableData = xCoord + yCoord
-        ArduinoController.sendData(sendableData)
+        ArduinoController.chooseAction(xCoord, yCoord)
+        
+
+        cv.imshow("FACE FILTER", frame)
+
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
         

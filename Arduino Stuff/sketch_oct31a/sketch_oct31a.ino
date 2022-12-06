@@ -20,8 +20,6 @@ void setup() {
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT);
 
-
-
 }
 
 void loop() {
@@ -46,10 +44,6 @@ void loop() {
         digitalWrite(motorPin1, HIGH);
         digitalWrite(motorPin2, HIGH);
 
-        if(shouldWeStop() == 1){
-          state = "STOP";
-        }
-
         break;
 
         case "FIRE":
@@ -57,17 +51,5 @@ void loop() {
           servo.write(180);
           break
     }
-
-int shouldWeStop( void ) {
-  if( digitalRead(BUTTON) == LOW ) {
-    //Serial.println( "   BUTTON LOW" );
-    return 0;
-  }
-  else {
-    //Serial.println( "   BUTTON HIGH" );
-    return 1;
-  }
-}
-
     
 }

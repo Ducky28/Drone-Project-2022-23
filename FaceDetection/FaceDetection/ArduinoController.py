@@ -2,6 +2,7 @@ import serial
 import numpy as np
 import cv2 as cv
 import Constants
+import time
 
 # gathering data from face detector file
 centerCoords = ()
@@ -14,9 +15,18 @@ try:
 except:
     pass
 
+def chooseAction(XCoord, YCoord):
+    if(abs(XCoord - Constants.X_MID) <= 5 and abs(YCoord - Constants.y_MID) <= 5):
+        time.wait(5)
+        sendCommand("SPIN MOTORS")
+        if(abs(XCoord - Constants.X_MID) <= 5 and abs(YCoord - Constants.y_MID) <= 5):
+            sendCommand("FIRE")
+        else:
+            sendCommand("STOP")
+        
 
-def sendData(data):
-    arduinoCommander.write((data))
-    print("Done fucked up")
+def sendCommand(command):
+    arduinoCommander.write((command))
+    print("SENT COMMAND: " + command)
 
 
