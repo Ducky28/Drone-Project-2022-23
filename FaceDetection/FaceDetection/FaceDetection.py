@@ -28,7 +28,8 @@ while True:
                 biggestFaceNum = x+y+width+height
                 bigX, bigY, bigWide, bigHeight = x, y, width, height
 
-        cv.rectangle(frame, (x, y), (bigX + bigWide, bigY + bigHeight), (0, 255, 0), 3)
+        # cv.rectangle(frame, (x, y), (bigX + bigWide, bigY + bigHeight), (0, 255, 0), 3)
+
         centerCoords = ((bigX+bigHeight)/2,(bigY+bigWide/2))
         xCoord = (centerCoords[0])
         yCoord = (centerCoords[1])
@@ -36,13 +37,12 @@ while True:
         sendableData = xCoord + yCoord
         ArduinoController.chooseAction(xCoord, yCoord)
         
+        # attempting to display the frame breaks the code for some reason, will need to look into issue later
 
-        cv.imshow("FACE FILTER", frame)
-
-        if cv.waitKey(1) & 0xFF == ord('q'):
+    if cv.waitKey(1) & 0xFF == ord('q'):
             break
         
-    cv.destroyAllWindows()
+cv.destroyAllWindows()
 
 
 

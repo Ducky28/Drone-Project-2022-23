@@ -15,18 +15,23 @@ try:
 except:
     pass
 
+# chooses action based on center of target distance from centerpoint of screen
+
 def chooseAction(XCoord, YCoord):
-    if(abs(XCoord - Constants.X_MID) <= 5 and abs(YCoord - Constants.y_MID) <= 5):
-        time.wait(5)
+    if(abs(XCoord - Constants.X_MID) <= 1000 and abs(YCoord - Constants.Y_MID) <= 1000):
         sendCommand("SPIN MOTORS")
-        if(abs(XCoord - Constants.X_MID) <= 5 and abs(YCoord - Constants.y_MID) <= 5):
+        print("LOCKING")
+        time.sleep(5)
+        if(abs(XCoord - Constants.X_MID) <= 1000 and abs(YCoord - Constants.Y_MID) <= 1000):
             sendCommand("FIRE")
+            sendCommand("RELOAD")
         else:
             sendCommand("STOP")
         
+# Encodes string command and writes it to arduino via serial port
 
 def sendCommand(command):
-    arduinoCommander.write((command))
+    arduinoCommander.write(command.encode('utf-8'))
     print("SENT COMMAND: " + command)
 
 
