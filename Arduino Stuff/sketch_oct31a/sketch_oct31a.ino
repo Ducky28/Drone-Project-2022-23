@@ -19,6 +19,8 @@ int servoFirePos = 0;
 int shooterStage = 0; 
 
 void setup(){
+  pinMode(PWMController1Pin, OUTPUT);
+  pinMode(PWMController2Pin, OUTPUT);
   servo.attach(servoPin);
 }
 
