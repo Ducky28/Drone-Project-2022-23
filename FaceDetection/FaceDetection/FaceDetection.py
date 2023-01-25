@@ -34,7 +34,6 @@ while True:
         xCoord = (centerCoords[0])
         yCoord = (centerCoords[1])
 
-        sendableData = xCoord + yCoord
         ArduinoController.chooseAction(xCoord, yCoord)
         
         # attempting to display the frame breaks the code for some reason, will need to look into issue later

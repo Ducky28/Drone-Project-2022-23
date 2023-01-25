@@ -16,15 +16,15 @@ def  changeColor(val, color, bound):
 
 cap = cv.VideoCapture(0)
 
-cv.namedWindow('ColorTracking')
+#cv.namedWindow('ColorTracking')
 
-cv.createTrackbar('Lower R', 'ColorTracking', 0, 255, lambda n: changeColor(n, 0, False))
-cv.createTrackbar('Lower G', 'ColorTracking', 90, 255, lambda n: changeColor(n, 1, False))
-cv.createTrackbar('Lower B', 'ColorTracking', 111, 255, lambda n: changeColor(n, 2, False))
+#cv.createTrackbar('Lower R', 'ColorTracking', 0, 255, lambda n: changeColor(n, 0, False))
+#cv.createTrackbar('Lower G', 'ColorTracking', 90, 255, lambda n: changeColor(n, 1, False))
+#cv.createTrackbar('Lower B', 'ColorTracking', 111, 255, lambda n: changeColor(n, 2, False))
 
-cv.createTrackbar('Upper R', 'ColorTracking', 204, 255, lambda n: changeColor(n, 0, True))
-cv.createTrackbar('Upper G', 'ColorTracking', 206, 255,  lambda n: changeColor(n, 1, True))
-cv.createTrackbar('Upper B', 'ColorTracking', 255, 255,  lambda n: changeColor(n, 2, True))
+#cv.createTrackbar('Upper R', 'ColorTracking', 204, 255, lambda n: changeColor(n, 0, True))
+#cv.createTrackbar('Upper G', 'ColorTracking', 206, 255,  lambda n: changeColor(n, 1, True))
+#cv.createTrackbar('Upper B', 'ColorTracking', 255, 255,  lambda n: changeColor(n, 2, True))
 
        
 def filterFace(frame):

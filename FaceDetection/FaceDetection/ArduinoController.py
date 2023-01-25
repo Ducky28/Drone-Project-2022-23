@@ -1,8 +1,9 @@
 import serial
 import numpy as np
 import cv2 as cv
-import Constants
 import time
+
+import Constants
 
 # gathering data from face detector file
 centerCoords = ()
