@@ -1,6 +1,6 @@
 
-int PWMController1Pin = 3;
-int PWMController2Pin = 5;
+#define PWMController1Pin 3;
+#define  PWMController2Pin 5;
 
 #define STOP 0
 #define SPIN_MOTORS 1
@@ -24,7 +24,6 @@ void loop(){
   switch(shooterStage){
 
     case STOP:
-
       analogWrite(PWMController1Pin, LOW);
       analogWrite(PWMController2Pin, LOW);
       break;
